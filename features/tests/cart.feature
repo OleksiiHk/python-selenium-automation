@@ -7,3 +7,6 @@ Feature: Cart Tests
     When Click Sign In
     And From right side navigation menu, click Sign In
     Then Verify Sign In form opened
+
+
+
