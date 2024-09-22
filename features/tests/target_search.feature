@@ -7,8 +7,21 @@ Feature: Tests for Target Search functionality
     Then Verify “Your cart is empty” message is shown
 
 
-  Scenario: User can go on sigh in page
+  Scenario: User can search for a product
     Given Open target.com
-    When Click Sign In
-    And From right side navigation menu, click Sign In
-    Then Verify Sign In form opened
+    When Search for a coffee
+    Then Verify that correct search result shows for coffee
+
+  Scenario: User can search for a product
+    Given Open target.com
+    When Search for a tea
+    Then Verify that correct search result shows for tea
+
+  Scenario Outline: User can search for product
+    Given Open target.com
+    When Search for a <search_word>
+    Then Verify that correct search result shows for <search_result>
+    Examples:
+    |search_word| search_result |
+    |milk       | milk          |
+    |apples     | apples        |
