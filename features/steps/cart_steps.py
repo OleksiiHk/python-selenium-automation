@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+
 
 
 @when('Open cart page')
@@ -15,7 +17,8 @@ def verify_cart(context):
 
 @then('Verify Sign In form opened')
 def verify_sign_in(context):
-    context.driver.find_element(By.XPATH, "//h1/span")
+    # context.driver.find_element(By.XPATH, "//h1/span")
+    context.driver.wait.until(EC.element_to_be_clickable((By.XPATH, "//h1/span"))).click()
 
 
 @then('Verify cart has {number} item')

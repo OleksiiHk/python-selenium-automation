@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+
 
 
 @given('Open target.com')
@@ -13,12 +15,17 @@ def open_target_circle_page(context):
     context.driver.get('https://www.target.com/circle')
 
 
+@given('Open https://help.target.com/help')
+def open_target(context):
+    context.driver.get('https://help.target.com/help')
+
+
 @when('Click on cart icon')
 def click_cart(context):
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
 
 
-@when('Search for {item}')
+@when('Search for a {item}')
 def search_product(context, item):
     # print(item)
     # Search field => enter tea
@@ -27,28 +34,16 @@ def search_product(context, item):
     context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
     sleep(10)
 
-
 @when('Click Sign In')
 def click_sign_in(context):
-    context.driver.find_element(By.XPATH, "//a[@data-test='@web/AccountLink']").click()
-    sleep(5)
+    # context.driver.find_element(By.XPATH, "//a[@data-test='@web/AccountLink']").click()
+    context.driver.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@data-test='@web/AccountLink']"))).click()
+
 
 @when('From right side navigation menu, click Sign In')
 def click_sign_in_second(context):
-    context.driver.find_element(By.XPATH, "//a[@data-test='accountNav-signIn']").click()
-    sleep(5)
-
-
-@when('Click on the product in the search results')
-def click_add_to_cart(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[id*='addToCartButton']").click()
-    sleep(5)
-
-
-@when('Click "Add to Cart" from the side menu')
-def side_nav_click_add_to_card(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='orderPickupButton'][id*='addToCartButtonOrTextIdFor']").click()
-    sleep(5)
+    # context.driver.find_element(By.XPATH, "//a[@data-test='accountNav-signIn']").click()
+    context.driver.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@data-test='accountNav-signIn']"))).click()
 
 
 @then('Verify header has {expected_amount} links')
@@ -81,9 +76,6 @@ def verify_benefit_cells(context, numbers):
 #     context.driver.find_element(By.CSS_SELECTOR, "[alt='Starbucks Unsweetened Medium Roast Iced Coffee - 48 fl oz']").click()
 #     sleep(5)
 
-@given('Open https://help.target.com/help')
-def open_target(context):
-    context.driver.get('https://help.target.com/help')
 
 
 @then('Verify "Target Help" header is displayed')
