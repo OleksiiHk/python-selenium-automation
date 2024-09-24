@@ -12,13 +12,14 @@ def open_cart(context):
 
 @then('Verify “Your cart is empty” message is shown')
 def verify_cart(context):
-    context.driver.find_element(By.XPATH, "//h1[text()='Your cart is empty']")
+    context.app.search_results_page.cart_is_empty()
+    # context.driver.find_element(By.XPATH, "//h1[text()='Your cart is empty']")
 
 
 @then('Verify Sign In form opened')
 def verify_sign_in(context):
-    # context.driver.find_element(By.XPATH, "//h1/span")
     context.driver.wait.until(EC.element_to_be_clickable((By.XPATH, "//h1/span"))).click()
+    # context.driver.find_element(By.XPATH, "//h1/span")
 
 
 @then('Verify cart has {number} item')

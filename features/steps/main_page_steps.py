@@ -7,8 +7,8 @@ from time import sleep
 
 @given('Open target.com')
 def open_target(context):
-    context.driver.get('https://www.target.com/')
-
+    # context.driver.get('https://www.target.com/')
+    context.app.main_page.open_main()
 
 @given('Open the Target Circle page')
 def open_target_circle_page(context):
@@ -22,17 +22,19 @@ def open_target(context):
 
 @when('Click on cart icon')
 def click_cart(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
+    context.app.header.click_cart()
+    # context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
 
 
 @when('Search for a {item}')
 def search_product(context, item):
-    # print(item)
-    # Search field => enter tea
-    context.driver.find_element(By.ID, 'search').send_keys(item)
-    # Search button => click
-    context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
-    sleep(10)
+    context.app.header.search_product(item)
+    # # print(item)
+    # # Search field => enter tea
+    # context.driver.find_element(By.ID, 'search').send_keys(item)
+    # # Search button => click
+    # context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
+    # sleep(10)
 
 @when('Click Sign In')
 def click_sign_in(context):

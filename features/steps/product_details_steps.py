@@ -33,3 +33,30 @@ def click_and_verify_colors(context):
         print('actual_colors list: ', actual_colors)
 
     assert expected_colors == actual_colors, f'Expected {expected_colors} did not match actual {actual_colors}'
+
+
+
+# # 11111111111111111111111111111111111111111111111111111111111111111111111111
+#
+#
+# COLOR_OPTIONSs = (By.CSS_SELECTOR, "[aria-label='Carousel'] img")
+# SELECTED_COLORr = (By.CSS_SELECTOR, "[data-test='@web/VariationComponent'] div")
+#
+# @then('Verify user can click through colorss')
+# def verify_user_click(context):
+#     expected_colors = ['grey', 'dark khaki', 'navy/tan', 'stone/grey',
+#                        'white/gum', 'white/navy/red', 'white/sand/tan',
+#                        'black/gum']
+#     actual_colors = []
+#
+#     colors = context.driver.find_elements(*COLOR_OPTIONSs)
+#
+#     for color in colors:
+#         color.click()
+#
+#         selected_colorr = context.driver.find_element(*SELECTED_COLORr).text
+#
+#         selected_colorr = selected_colorr.split('\n')[1]
+#         actual_colors.append(selected_colorr)
+#
+#     assert expected_colors == actual_colors

@@ -45,3 +45,7 @@ Feature: Tests for Target Search functionality
     And Open cart page
     Then Verify cart has 1 item
 
+  Scenario: Verify that user can see product names and images
+    Given Open target.com
+    When Search for a AirPods (3rd Generation)
+    Then Verify that every product has a name and an image
