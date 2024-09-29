@@ -6,8 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
-ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[id*='addToCartButton']")
-ADD_TO_CART_BTN_SIDE_NAV = (By.CSS_SELECTOR, "[data-test='orderPickupButton'][id*='addToCartButtonOrTextIdFor']")
 LISTINGS = (By.CSS_SELECTOR, "[data-test='@web/site-top-of-funnel/ProductCardWrapper']")
 PRODUCT_TITLE = (By.CSS_SELECTOR, "[data-test='product-title']")
 PRODUCT_IMG = (By.CSS_SELECTOR, 'img')
@@ -15,15 +13,12 @@ PRODUCT_IMG = (By.CSS_SELECTOR, 'img')
 
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):
-    # context.driver.find_element(*ADD_TO_CART_BTN).click()
-    context.driver.wait.until(EC.element_to_be_clickable(ADD_TO_CART_BTN)).click()
-
+    context.app.search_results_page.click_add_to_cart()
 
 @when('Confirm Add to Cart button from side navigation')
-def side_nav_click_add_to_card(context):
-    # context.driver.find_element(*ADD_TO_CART_BTN_SIDE_NAV).click()
-    context.driver.wait.until(EC.element_to_be_clickable(ADD_TO_CART_BTN_SIDE_NAV)).click()
-
+def side_nav_click_add_to_cart(context):
+    context.app.search_results_page.side_nav_click_add_to_cart()
+    sleep(2)
 
 @then('Verify that correct search result shows for {product}')
 def verify_search(context, product):
