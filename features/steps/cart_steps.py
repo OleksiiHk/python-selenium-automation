@@ -11,8 +11,8 @@ def open_cart(context):
 
 
 @then('Verify “Your cart is empty” message is shown')
-def verify_cart(context):
-    context.app.search_results_page.cart_is_empty()
+def verify_cart_empty(context):
+    context.app.cart_page.verify_cart_empty()
     # context.driver.find_element(By.XPATH, "//h1[text()='Your cart is empty']")
 
 

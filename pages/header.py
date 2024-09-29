@@ -14,4 +14,5 @@ class Header(Page):
         sleep(6) # wait for search results page to load
 
     def click_cart(self):
-        self.click(*self.CART_BTN)
+        self.wait_to_be_clickable_click(*self.CART_BTN)
+        
