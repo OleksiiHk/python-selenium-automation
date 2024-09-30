@@ -68,7 +68,7 @@ class Page:
     def close(self):
         self.driver.close()
 
-        
+
     def verify_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
         assert actual_text == expected_text, f'Expected: {expected_text}, Actual: {actual_text} '

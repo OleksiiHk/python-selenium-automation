@@ -10,6 +10,8 @@ class SignInPage(Page):
     PASSWORD_FIELD_TEXT = (By.ID, "password")
     LOGIN_BTN = (By.ID, 'login')
 
+    TERMS_AND_CONDITIONS_LINK = (By.CSS_SELECTOR, "[aria-label*='terms & conditions']")
+
     def verify_sign_in(self):
         # self.find_element(*self.SIGN_IN_PAGE_OPEN)
         self.verify_text('Sign into your Target account', *self.SIGN_IN_PAGE_OPEN_TEXT)
@@ -28,3 +30,15 @@ class SignInPage(Page):
 
     def verify_user_is_logged_in(self, username):
         self.verify_partial_text(username, *self.LOGIN_BTN)
+
+
+    def open_sign_in_page(self):
+        self.open('https://www.target.com/login')
+
+
+    def click_target_terms_and_conditions_link(self):
+        self.wait_to_be_clickable_click(*self.TERMS_AND_CONDITIONS_LINK)
+
+
+    def verify_target_terms_and_conditions_page(self):
+        self.verify_partial_url('terms-conditions')

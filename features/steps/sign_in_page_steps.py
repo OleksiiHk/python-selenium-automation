@@ -19,3 +19,29 @@ def click_sign_in_with_password(context):
 @then ('Verify user is logged in')
 def verify_user_is_logged_in(context):
     context.app.sign_in_page.verify_user_is_logged_in()
+
+
+@given ('Open sign in page')
+def open_sign_in_page(context):
+    context.app.sign_in_page.open_sign_in_page()
+
+
+@when ('Store original window')
+def store_original_window(context):
+    context.original_window = context.app.sign_in_page.get_current_window()
+
+
+@when ('Click on Target terms and conditions link')
+def click_target_terms_and_conditions_link(context):
+    context.app.sign_in_page.click_target_terms_and_conditions_link()
+
+
+@then ('Verify Terms and Conditions page is opened')
+def verify_target_terms_and_conditions_page(context):
+    context.app.sign_in_page.verify_target_terms_and_conditions_page()
+
+
+
+
+
+

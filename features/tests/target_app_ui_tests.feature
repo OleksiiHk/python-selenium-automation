@@ -8,3 +8,4 @@ Feature: Tests for Target App page
     Then Verify Privacy Policy page opened
     And Close current page
     And Return to original window
+
